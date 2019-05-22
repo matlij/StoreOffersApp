@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppLocator.Helpers.SettingsPage">
+    <NavigationPage.TitleView>
+        <Label Text="Inställningar"
+               FontSize="Medium"
+               VerticalOptions="CenterAndExpand"
+               TextColor="White"/>
+    </NavigationPage.TitleView>
+    <StackLayout Margin="10">
+
+        <Label Text="{Binding Settings.StoreOfferRadius, StringFormat='Erbjudanderadie: {0} km'}"
+                x:Name="sliderLabelOffer"/>
+        <Slider Value="{Binding Settings.StoreOfferRadius}"
+                x:Name="sliderOffer"
+                Maximum="40"
+                ValueChanged="SliderOffer_ValueChanged"
+                Margin="5"
+                MinimumTrackColor="#66CED6"
+                ThumbColor="#8797B2"/>
+
+        <Label Text="{Binding Settings.SearchOfferIntervalSeconds, StringFormat='Sök erbjudanden intervall: {0} sek'}"
+                x:Name="sliderLabelSearch"/>
+        <Slider Value="{Binding Settings.SearchOfferIntervalSeconds}"
+                x:Name="sliderSearch"
+                Maximum="100"
+                ValueChanged="SliderSearch_ValueChanged"
+                Margin="5"
+                MinimumTrackColor="#66CED6"
+                ThumbColor="#8797B2"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Din position"
+                       FontAttributes="Bold"/>
+            <Label Text="Latitude: "
+                       Grid.Row="1"/>
+            <Label Text="{Binding UserLocation.Latitude}"
+                       Grid.Row="1"
+                       Grid.Column="1"/>
+            <Label Text="Longitude: "
+                       Grid.Row="2"/>
+            <Label Text="{Binding UserLocation.Longitude}"
+                       Grid.Row="2"
+                       Grid.Column="1"/>
+            <Button Text="Spara" 
+                    Grid.Row="3"
+                    VerticalOptions="End"
+                    Grid.ColumnSpan="2"
+                    Clicked="ButtonSaveClicked"
+                    Style="{StaticResource buttonStyle}"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

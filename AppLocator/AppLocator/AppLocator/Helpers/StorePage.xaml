@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppLocator.Helpers.StorePage">
+
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Name}"
+               FontSize="Medium"
+               VerticalOptions="CenterAndExpand"/>
+    </NavigationPage.TitleView>
+    <ScrollView>
+        <StackLayout Margin="20,35,20,20"
+                     Spacing="20">
+            <Image Source="{Binding LogoUrl}"
+                   HeightRequest="70"
+                   Aspect="AspectFit"/>
+            <Label Text="{Binding Offer}"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+            <Label Text="{Binding FullOffer}"/>
+            <Label Text="Praktisk information"
+                   FontSize="Medium"/>
+            <ImageButton Clicked="ImageButtonMapClicked" 
+                         Source="HmMap.jpg"
+                         HeightRequest="70"
+                         Aspect="AspectFill"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Öppettider"
+                       FontAttributes="Bold"
+                       Grid.ColumnSpan="2"/>
+                <Label Text="Vardagar"
+                       Grid.Row="1"/>
+                <Label Text="Lör"
+                       Grid.Row="2"/>
+                <Label Text="Sön"
+                       Grid.Row="3"/>
+                <Label Text="09.00 - 19.00"
+                       Grid.Row="1"
+                       Grid.Column="1"/>
+                <Label Text="10.00 - 17.00"
+                       Grid.Row="2"
+                       Grid.Column="1"/>
+                <Label Text="11.00 - 17.00"
+                       Grid.Row="3"
+                       Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

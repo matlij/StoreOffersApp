@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:appLocatorItem="clr-namespace:AppLocator.Models.Items"
+             xmlns:helpers="clr-namespace:AppLocator.Helpers"
+             x:Class="AppLocator.Helpers.MasterPagerView"
+             Title="Navigation">
+    <StackLayout Padding="10">
+        <StackLayout Padding="20">
+            <Label  Text="Hitta erbjudanden"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+        </StackLayout>
+        <ListView x:Name="NavigationListView" x:FieldModifier="public">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type appLocatorItem:MasterNavigationItem}">
+                    <appLocatorItem:MasterNavigationItem Title="Erbjudanden" Icon="OffersIcon.png" Target="{x:Type helpers:MainPage}"/>
+                    <appLocatorItem:MasterNavigationItem Title="Inställningar" Icon="SettingsIcon.png" Target="{x:Type helpers:SettingsPage}"/>
+                    <appLocatorItem:MasterNavigationItem Title="Butiker" Icon="StoresIcon.png" Target="{x:Type helpers:StoreListPage}"/>
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Icon}"
+                                   HorizontalOptions="Start"/>
+                            <Label Grid.Column="1"
+                                   FontSize="Medium"
+                                   Text="{Binding Title}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

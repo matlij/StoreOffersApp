@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppLocator"
+             x:Class="AppLocator.Helpers.MainPage">
+    <NavigationPage.TitleView>
+        <Label Text="Erbjudanden"
+               FontSize="Medium"
+               VerticalOptions="CenterAndExpand"
+               TextColor="White"/>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Stores}"
+                      HasUnevenRows="true"
+                      ItemTapped="OnListViewItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image  Grid.RowSpan="2"
+                                    Source="{Binding LogoUrl}"
+                                    Aspect="AspectFit"
+                                    HeightRequest="60"
+                                    WidthRequest="60" />
+                                <Label  Grid.Column="1"
+                                    Text="{Binding Name}"
+                                    FontAttributes="Bold" />
+                                <Label  Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Offer}"/>
+                                <Label  Grid.Row="2"
+                                    Grid.Column="1"
+                                    Text="{Binding DistanceToCustomer, StringFormat='{0} km'}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
